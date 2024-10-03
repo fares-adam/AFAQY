@@ -74,4 +74,14 @@ A RESTful microservice for managing user profiles, including user authentication
 1. Clone the repository:
    ```bash
    git clone <repository_url>
-   cd user_profile_microservice
+   cd <into directory>
+2. create virtual enviroment either using pyenv or any other
+  
+  ```
+  virtualenv -p=/home/fares/.pyenv/shims/python3 venv (for ubuntu)
+  ```cd C:\path\to\your\project          # Navigate to your project directory
+python -m venv venv                 # Create a virtual environment
+venv\Scripts\activate                # Activate the virtual environment
+pip install requests python-dotenv   # Install packages
+deactivate                           # Deactivate the virtual environment
+for windows
