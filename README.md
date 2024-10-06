@@ -1,87 +1,292 @@
 # AFAQY
+
 # User Profile Microservice
 
-A RESTful microservice for managing user profiles, including user authentication, CRUD operations, external API integration, concurrency, and state management.
+## Overview
+A microservice for managing user profiles, integrating with a weather API, and managing user states.
 
-## Features
+### Features
+- User CRUD operations
+- JWT authentication and role-based access control
+- Integration with a weather API
+- Automatic weather updates and state transitions
 
-- **User Profile Management**: Create, read, update, and delete user profiles.
-- **Authentication & Authorization**: JWT-based authentication with role-based access control (RBAC).
-- **Third-Party API Integration**: Fetch current weather data for user locations from external APIs.
-- **Batch Processing**: Analyze user data concurrently to calculate average temperatures.
-- **State Machine Implementation**: Manage user states (Active, Inactive, Suspended) with automatic transitions.
-- **Logging**: Dual handler logging with rotating file handler.
-  
-## API Endpoints
+### How to Run
+1. **Install Python on Windows:**
 
-### User Management
-
-- **Create User**
-  - `POST /users`
-  - Request: 
-    ```json
-    {
-      "username": "johndoe",
-      "name": "John Doe",
-      "email": "johndoe@example.com",
-      "phone": "123-456-7890",
-      "city": "New York"
-    }
+   - Go to the official Python website: [Python Downloads](https://www.python.org/downloads/).
+   - Download the latest version of Python (ensure it's Python 3.7+).
+   - Run the Python installer.
+   - During installation, **check the option "Add Python to PATH"** before clicking Install.
+   - Once installed, open the **Command Prompt** and verify Python installation with:
+     ```
+     python --version
+     ```
+     ---
+2.**Clone the repository**
+   ```
+   git clone <repository-url>
+   cd your_folder
     ```
-- **Get User**
-  - `GET /users/{id}`
-- **Update User**
-  - `PUT /users/{id}`
-  - Request:
-    ```json
-    {
-      "name": "John Doe Updated"
-    }
-    ```
-- **Delete User**
-  - `DELETE /users/{id}`
+---
+```
+3.**Create a virtual environment**  
+   Set up a Python virtual environment to manage dependencies:
+   ```
+   python -m venv venv
+```
 
-### Authentication
 
-- **Login**
-  - `POST /login`
-  - Request:
-    ```json
-    {
-      "username": "johndoe",
-      "password": "your_password"
-    }
-    ```
-  - Response:
-    ```json
-    {
-      "access_token": "your_access_token",
-      "token_type": "bearer"
-    }
-    ```
+### 3. **Activate the Virtual Environment**
 
-## Requirements
+```markdown
+3. **Activate the virtual environment**  
+   Activate the virtual environment:
 
-- Python 3.8+
-- FastAPI
-- pymongo
-- pydantic
-- jwt
-- uvicorn
+   - On **Windows**:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On **Mac/Linux**:
+     ```
+     source venv/bin/activate
+     
+     
+```
+4. **Ensure `pip` is installed:**
 
-## Setup Instructions
+   - `pip` is the package installer for Python, usually installed with Python. If not, you can install it manually:
+     ```
+     python -m ensurepip --upgrade
+     ```
 
-1. Clone the repository:
-   ```bash
-   git clone <repository_url>
-   cd <into directory>
-2. create virtual enviroment either using pyenv or any other
-  
+   - Verify `pip` is installed by running:
+     ```
+     pip --version
+
+5. **Install Dependencies**
+
+- Use `pip` to install all required packages from the `requirements.txt` file:
+
+  ```bash
+  pip install -r requirements.txt
+
+
+5. **Set Up Environment Variables**
+
+- Create a `.env` file in the root directory of your project to store sensitive information like your API key and other variables:
+mine is :
+
   ```
-  virtualenv -p=/home/fares/.pyenv/shims/python3 venv (for ubuntu)
-  ```cd C:\path\to\your\project          # Navigate to your project directory
-python -m venv venv                 # Create a virtual environment
-venv\Scripts\activate                # Activate the virtual environment
-pip install requests python-dotenv   # Install packages
-deactivate                           # Deactivate the virtual environment
-for windows
+WEATHER_API_KEY=fc991c99234d4526aae42339240310
+BASE_URL = "http://api.weatherapi.com/v1/current.json"
+
+
+
+---
+```
+6. **Run the Application**
+
+
+- Start the FastAPI server using `uvicorn`:
+
+```
+uvicorn main:app --reload
+
+# AFAQY
+
+# User Profile Microservice
+
+## Overview
+A microservice for managing user profiles, integrating with a weather API, and managing user states.
+
+### Features
+- User CRUD operations
+- JWT authentication and role-based access control
+- Integration with a weather API
+- Automatic weather updates and state transitions
+
+### How to Run
+1. **Install Python on Windows:**
+
+   - Go to the official Python website: [Python Downloads](https://www.python.org/downloads/).
+   - Download the latest version of Python (ensure it's Python 3.7+).
+   - Run the Python installer.
+   - During installation, **check the option "Add Python to PATH"** before clicking Install.
+   - Once installed, open the **Command Prompt** and verify Python installation with:
+     ```
+     python --version
+     ```
+     ---
+2.**Clone the repository**
+   ```
+   git clone <repository-url>
+   cd your_folder
+    ```
+---
+```
+3.**Create a virtual environment**  
+   Set up a Python virtual environment to manage dependencies:
+   ```
+   python -m venv venv
+```
+
+
+### 3. **Activate the Virtual Environment**
+
+```markdown
+3. **Activate the virtual environment**  
+   Activate the virtual environment:
+
+   - On **Windows**:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On **Mac/Linux**:
+     ```
+     source venv/bin/activate
+     
+     
+```
+4. **Ensure `pip` is installed:**
+
+   - `pip` is the package installer for Python, usually installed with Python. If not, you can install it manually:
+     ```
+     python -m ensurepip --upgrade
+     ```
+
+   - Verify `pip` is installed by running:
+     ```
+     pip --version
+
+5. **Install Dependencies**
+
+- Use `pip` to install all required packages from the `requirements.txt` file:
+
+  ```bash
+  pip install -r requirements.txt
+
+
+5. **Set Up Environment Variables**
+
+- Create a `.env` file in the root directory of your project to store sensitive information like your API key and other variables:
+mine is :
+
+  ```
+WEATHER_API_KEY=fc991c99234d4526aae42339240310
+BASE_URL = "http://api.weatherapi.com/v1/current.json"
+
+
+
+---
+```
+6. **Run the Application**
+
+
+- Start the FastAPI server using `uvicorn`:
+
+```
+uvicorn main:app --reload
+
+# AFAQY
+
+# User Profile Microservice
+
+## Overview
+A microservice for managing user profiles, integrating with a weather API, and managing user states.
+
+### Features
+- User CRUD operations
+- JWT authentication and role-based access control
+- Integration with a weather API
+- Automatic weather updates and state transitions
+
+### How to Run
+1. **Install Python on Windows:**
+
+   - Go to the official Python website: [Python Downloads](https://www.python.org/downloads/).
+   - Download the latest version of Python (ensure it's Python 3.7+).
+   - Run the Python installer.
+   - During installation, **check the option "Add Python to PATH"** before clicking Install.
+   - Once installed, open the **Command Prompt** and verify Python installation with:
+     ```
+     python --version
+     ```
+     ---
+2.**Clone the repository**
+   ```
+   git clone <repository-url>
+   cd your_folder
+    ```
+---
+```
+3.**Create a virtual environment**  
+   Set up a Python virtual environment to manage dependencies:
+   ```
+   python -m venv venv
+```
+
+
+### 3. **Activate the Virtual Environment**
+
+```markdown
+3. **Activate the virtual environment**  
+   Activate the virtual environment:
+
+   - On **Windows**:
+     ```bash
+     venv\Scripts\activate
+     ```
+   - On **Mac/Linux**:
+     ```
+     source venv/bin/activate
+     
+     
+```
+4. **Ensure `pip` is installed:**
+
+   - `pip` is the package installer for Python, usually installed with Python. If not, you can install it manually:
+     ```
+     python -m ensurepip --upgrade
+     ```
+
+   - Verify `pip` is installed by running:
+     ```
+     pip --version
+
+5. **Install Dependencies**
+
+- Use `pip` to install all required packages from the `requirements.txt` file:
+
+  ```bash
+  pip install -r requirements.txt
+
+
+5. **Set Up Environment Variables**
+
+- Create a `.env` file in the root directory of your project to store sensitive information like your API key and other variables:
+mine is :
+
+  ```
+WEATHER_API_KEY=fc991c99234d4526aae42339240310
+BASE_URL = "http://api.weatherapi.com/v1/current.json"
+
+
+
+---
+```
+6. **Run the Application**
+
+
+- Start the FastAPI server using `uvicorn`:
+
+```
+uvicorn main:app --reload
+```
+## importnant info
+1-when you start the app an admin user will be created if its not there.
+```
+email: admin@example.com                         
+password: admin
+```
+
